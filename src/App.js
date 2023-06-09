@@ -8,22 +8,24 @@ import Post from './components/Post';
 import CreatePost from './components/CreatePost';
 
 const App = () => {
-  const Posts = ""
+  const Posts = "undefined";
+
+let Postslength = undefined;
+
+// Check if "arr" is truthy
+if (Posts) {
+  Postslength = Posts.length;
+}
+
+console.log(Postslength); // undefined
   return (
     <Router>
       <div className="app">
         <Header />
         <Routes>
-          <Route path="/create" element={<CreatePost/>}/>
-            
-            
-          
-          <Route path="/post/:id" elemnt={<Post/>}/>
-            
-          
-          <Route path="/" element={<Posts/>}/>
-            
-          
+          <Route path="/create" element={<CreatePost />} />
+          <Route path="/post/:id" element={<Post />} />
+          <Route path="/" element={<Posts />} />
         </Routes>
       </div>
     </Router>
