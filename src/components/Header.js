@@ -1,4 +1,3 @@
-// src/components/Header.js
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { RiInstagramLine } from 'react-icons/ri';
@@ -9,16 +8,26 @@ const Header = () => {
   return (
     <header className="header">
       <div className="container">
-        <Link to={location.pathname || '/'}>
-          <RiInstagramLine className="header__logo" />
+        <Link to="/" className="header__logo">
+          <RiInstagramLine />
         </Link>
         <nav>
           <ul>
             <li>
-              <Link to={`${location.pathname}/`}>Home</Link>
+              <Link
+                to="/"
+                className={location.pathname === '/' ? 'active' : ''}
+              >
+                Home
+              </Link>
             </li>
             <li>
-              <Link to={`${location.pathname}/create`}>Create Post</Link>
+              <Link
+                to="/create"
+                className={location.pathname === '/create' ? 'active' : ''}
+              >
+                Create Post
+              </Link>
             </li>
           </ul>
         </nav>

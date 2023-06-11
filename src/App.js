@@ -6,6 +6,8 @@ import Header from './components/Header';
 import Posts from './components/Posts';
 import Post from './components/Post';
 import CreatePost from './components/CreatePost';
+import NotFound from './components/NotFound';
+
 
 const App = () => {
   const Posts = [
@@ -42,6 +44,8 @@ console.log(Postslength); // undefined
           <Route path="/create" element={<CreatePost />} />
           <Route path="/post/:id" element={<Post />} />
           <Route path="/" element={() => <Posts posts={Posts} />} />
+          <Route path="*" element={<NotFound />} />
+
         </Routes>
       </div>
     </Router>
