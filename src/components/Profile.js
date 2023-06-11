@@ -7,6 +7,7 @@ const Profile = () => {
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState('');
   const [bio, setBio] = useState('');
+  const [posts, setPosts] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
@@ -16,6 +17,14 @@ const Profile = () => {
         setUser(userData);
         setUsername(userData.username);
         setBio(userData.bio);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+    axios.get(`https://api.example.com/users/${userId}/posts`)
+      .then(response => {
+        setPosts(response.data);
       })
       .catch(error => {
         console.error(error);
@@ -68,6 +77,16 @@ const Profile = () => {
       )}
 
       <img src={user.profilePicture} alt={user.username} />
+
+      <h3>My Posts</h3>
+      <div className="post-list">
+        {posts.map(post => (
+          <div key={post.id} className="post">
+            <h4>{post.title}</h4>
+            <p>{post.body}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
