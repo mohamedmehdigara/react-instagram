@@ -10,6 +10,7 @@ import NotFound from './components/NotFound';
 import Profile from './components/Profile';
 import Feed from './components/Feed';
 import Signup from './components/Signup';
+import Login from './components/Login';
 
 
 
@@ -58,6 +59,8 @@ const currentUser = {
           <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/" element={<Feed />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+
 
 
 
