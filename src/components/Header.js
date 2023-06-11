@@ -2,7 +2,8 @@ import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { RiInstagramLine } from 'react-icons/ri';
 
-const Header = () => {
+
+const Header = ({currentUser}) => {
   const location = useLocation();
 
   return (
@@ -28,6 +29,10 @@ const Header = () => {
               >
                 Create Post
               </Link>
+            </li>
+            <li>
+            <Link to={`/profile/${currentUser.id}`}>My Profile</Link>
+
             </li>
           </ul>
         </nav>

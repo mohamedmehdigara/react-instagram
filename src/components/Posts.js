@@ -28,7 +28,7 @@ const Posts = () => {
           <Skeleton count={5} height={80} />
         ) : (
           posts.map((post) => (
-            <Link to={`/post/${post.id}`} key={post.id} className="post">
+<Link to={`/profile/${post.userId}`} key={post.id} className="post">
               <h2>{post.title}</h2>
               <p>{post.body}</p>
             </Link>

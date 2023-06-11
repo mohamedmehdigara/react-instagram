@@ -7,6 +7,8 @@ import Posts from './components/Posts';
 import Post from './components/Post';
 import CreatePost from './components/CreatePost';
 import NotFound from './components/NotFound';
+import Profile from './components/Profile';
+
 
 
 const App = () => {
@@ -36,15 +38,22 @@ if (Posts) {
 }
 
 console.log(Postslength); // undefined
+const currentUser = {
+  id: '123',
+  username: 'john_doe',
+  // Add other user properties as needed
+};
   return (
     <Router>
       <div className="app">
-        <Header />
+        <Header currentUser={currentUser} />
         <Routes>
           <Route path="/create" element={<CreatePost />} />
           <Route path="/post/:id" element={<Post />} />
           <Route path="/" element={() => <Posts posts={Posts} />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/profile/:userId" element={<Profile />} />
+
 
         </Routes>
       </div>
