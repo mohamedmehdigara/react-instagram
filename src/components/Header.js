@@ -34,6 +34,9 @@ const Header = ({currentUser}) => {
             <Link to={`/profile/${currentUser.id}`}>My Profile</Link>
 
             </li>
+            <li>
+              <Link to="/feed">Feed</Link>
+            </li>
           </ul>
         </nav>
       </div>

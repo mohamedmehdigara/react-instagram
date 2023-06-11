@@ -8,6 +8,8 @@ import Post from './components/Post';
 import CreatePost from './components/CreatePost';
 import NotFound from './components/NotFound';
 import Profile from './components/Profile';
+import Feed from './components/Feed';
+
 
 
 
@@ -53,6 +55,8 @@ const currentUser = {
           <Route path="/" element={() => <Posts posts={Posts} />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/profile/:userId" element={<Profile />} />
+          <Route path="/" element={<Feed />} />
+
 
 
         </Routes>
