@@ -11,6 +11,7 @@ import Profile from './components/Profile';
 import Feed from './components/Feed';
 import Signup from './components/Signup';
 import Login from './components/Login';
+import UserProfile from './components/UserProfile';
 
 
 
@@ -60,6 +61,8 @@ const currentUser = {
           <Route path="/" element={<Feed />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/profile/:username" element={<UserProfile />} />
+
 
 
 
