@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const CreatePost = () => {
+const CreatePost = ({ onPostCreated }) => {
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
@@ -15,10 +15,12 @@ const CreatePost = () => {
       body
     };
 
-    axios.post('https://jsonplaceholder.typicode.com/posts', data)
+    axios
+      .post('https://jsonplaceholder.typicode.com/posts', data)
       .then(response => {
-        console.log(response.data);
-        navigate.push('/');
+        const newPost = response.data;
+        onPostCreated(newPost);
+        navigate('/');
       })
       .catch(error => console.error(error));
   };
