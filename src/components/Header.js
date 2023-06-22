@@ -1,10 +1,24 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { RiInstagramLine } from 'react-icons/ri';
+
 
 
 const Header = ({currentUser}) => {
   const location = useLocation();
+  const history = useNavigate();
+
+  const handleLogin = () => {
+    // Implement your login logic here
+    // For example, you can redirect the user to the login page
+    history.push('/login');
+  };
+
+  const handleSignup = () => {
+    // Implement your signup logic here
+    // For example, you can redirect the user to the signup page
+    history.push('/signup');
+  };
 
   return (
     <header className="header">
@@ -37,6 +51,8 @@ const Header = ({currentUser}) => {
             <li>
               <Link to="/feed">Feed</Link>
             </li>
+            <button onClick={handleLogin}>Login</button>
+            <button onClick={handleSignup}>Signup</button>
           </ul>
         </nav>
       </div>
