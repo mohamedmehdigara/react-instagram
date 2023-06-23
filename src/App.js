@@ -1,7 +1,7 @@
 // src/App.js
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
+import axios from 'axios';
 import Header from './components/Header';
 import Posts from './components/Posts';
 import Post from './components/Post';
@@ -18,10 +18,9 @@ import "./App.css";
 
 
 const App = () => {
-  const handleCreatePost = (newPost) => {
-    // Logic to handle post creation
-  };
   
+  const [ setCurrentUser] = useState(null);
+  const [posts, setPosts] = useState([]);
   // Rest of your code
   
   const Posts = [
@@ -54,6 +53,35 @@ const currentUser = {
   id: '123',
   username: 'john_doe',
   // Add other user properties as needed
+};
+useEffect(() => {
+  // Fetch the user and post data here
+  fetchUser();
+  fetchPosts();
+}, []);
+
+
+const fetchUser = async () => {
+  try {
+    const response = await axios.get('https://api.example.com/currentUser');
+    setCurrentUser(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const fetchPosts = async () => {
+  try {
+    const response = await axios.get('https://api.example.com/posts');
+    setPosts(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+const handleCreatePost = (newPost) => {
+  // Add the new post to the posts state
+  setPosts((prevPosts) => [...prevPosts, newPost]);
 };
   return (
     <Router>
