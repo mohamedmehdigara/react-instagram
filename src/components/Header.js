@@ -2,22 +2,16 @@ import React from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { RiInstagramLine } from 'react-icons/ri';
 
-
-
-const Header = ({currentUser}) => {
+const Header = ({ currentUser }) => {
   const location = useLocation();
-  const history = useNavigate();
+  const navigate = useNavigate();
 
   const handleLogin = () => {
-    // Implement your login logic here
-    // For example, you can redirect the user to the login page
-    history.push('/login');
+    navigate('/login');
   };
 
   const handleSignup = () => {
-    // Implement your signup logic here
-    // For example, you can redirect the user to the signup page
-    history.push('/signup');
+    navigate('/signup');
   };
 
   return (
@@ -29,30 +23,27 @@ const Header = ({currentUser}) => {
         <nav>
           <ul>
             <li>
-              <Link
-                to="/"
-                className={location.pathname === '/' ? 'active' : ''}
-              >
+              <Link to="/" className={location.pathname === '/' ? 'active' : ''}>
                 Home
               </Link>
             </li>
             <li>
-              <Link
-                to="/create"
-                className={location.pathname === '/create' ? 'active' : ''}
-              >
+              <Link to="/create" className={location.pathname === '/create' ? 'active' : ''}>
                 Create Post
               </Link>
             </li>
             <li>
-            <Link to={`/profile/${currentUser.id}`}>My Profile</Link>
-
+              <Link to={`/profile/${currentUser.id}`}>My Profile</Link>
             </li>
             <li>
               <Link to="/feed">Feed</Link>
             </li>
-            <button onClick={handleLogin}>Login</button>
-            <button onClick={handleSignup}>Signup</button>
+            <li>
+              <button onClick={handleLogin}>Login</button>
+            </li>
+            <li>
+              <button onClick={handleSignup}>Signup</button>
+            </li>
           </ul>
         </nav>
       </div>
