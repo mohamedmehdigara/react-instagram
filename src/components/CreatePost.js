@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 const CreatePost = ({ handleCreatePost }) => {
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
+  const [caption, setCaption] = useState('');
+  const [image, setImage] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,6 +14,8 @@ const CreatePost = ({ handleCreatePost }) => {
       id: Date.now(),
       title,
       body,
+      caption,
+      image,
     };
 
     // Call the handleCreatePost function passed from the parent component

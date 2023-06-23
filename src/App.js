@@ -17,7 +17,13 @@ import "./App.css";
 
 
 
-const App = ({handleCreatePost}) => {
+const App = () => {
+  const handleCreatePost = (newPost) => {
+    // Logic to handle post creation
+  };
+  
+  // Rest of your code
+  
   const Posts = [
     {
       id: 1,
