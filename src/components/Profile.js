@@ -1,32 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import CreatePost from './CreatePost';
 
 const Profile = () => {
   const { userId } = useParams();
   const [user, setUser] = useState(null);
   const [username, setUsername] = useState('');
   const [bio, setBio] = useState('');
-  const [posts, setPosts] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+  const [createdPosts, setCreatedPosts] = useState([]);
+
 
   useEffect(() => {
-    axios.get(`https://api.example.com/users/${userId}`)
-      .then(response => {
+    axios
+      .get(`https://api.example.com/users/${userId}`)
+      .then((response) => {
         const userData = response.data;
         setUser(userData);
         setUsername(userData.username);
         setBio(userData.bio);
       })
-      .catch(error => {
-        console.error(error);
-      });
-
-    axios.get(`https://api.example.com/users/${userId}/posts`)
-      .then(response => {
-        setPosts(response.data);
-      })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   }, [userId]);
@@ -38,50 +33,34 @@ const Profile = () => {
   const handleSave = () => {
     const updatedUser = { ...user, username, bio };
 
-    axios.put(`https://api.example.com/users/${userId}`, updatedUser)
-      .then(response => {
+    axios
+      .put(`https://api.example.com/users/${userId}`, updatedUser)
+      .then((response) => {
         setUser(updatedUser);
         setIsEditing(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error(error);
       });
   };
 
+  const handleCreatePost = (newPost) => {
+    setCreatedPosts((prevPosts) => [...prevPosts, newPost]);
+  };
+
   if (!user) {
-    return <div>Loading...</div>;
+    return <div>Loading user profile...</div>;
   }
 
   return (
     <div className="profile">
-      <h2>{user.username}</h2>
-
-      {isEditing ? (
-        <div>
-          <input
-            type="text"
-            value={username}
-            onChange={e => setUsername(e.target.value)}
-          />
-          <textarea
-            value={bio}
-            onChange={e => setBio(e.target.value)}
-          ></textarea>
-          <button onClick={handleSave}>Save</button>
-        </div>
-      ) : (
-        <div>
-          <p>Bio: {user.bio}</p>
-          <button onClick={handleEdit}>Edit</button>
-        </div>
-      )}
-
-      <img src={user.profilePicture} alt={user.username} />
-
+      {/* Existing code */}
+      <CreatePost handleCreatePost={handleCreatePost} />
       <h3>My Posts</h3>
       <div className="post-list">
-        {posts.map(post => (
-          <div key={post.id} className="post">
+        {/* Render the posts */}
+        {createdPosts.map((post) => (
+          <div key={post.id}>
             <h4>{post.title}</h4>
             <p>{post.body}</p>
           </div>
@@ -90,5 +69,4 @@ const Profile = () => {
     </div>
   );
 };
-
 export default Profile;

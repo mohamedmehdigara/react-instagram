@@ -17,7 +17,7 @@ import "./App.css";
 
 
 
-const App = () => {
+const App = ({handleCreatePost}) => {
   const Posts = [
     {
       id: 1,
@@ -54,7 +54,7 @@ const currentUser = {
       <div className="app">
         <Header currentUser={currentUser} />
         <Routes>
-          <Route path="/create" element={<CreatePost />} />
+        <Route path="/create" element={<CreatePost handleCreatePost={handleCreatePost} />} />
           <Route path="/post/:id" element={<Post />} />
           <Route path="/" element={() => <Posts posts={Posts} />} />
           <Route path="*" element={<NotFound />} />
