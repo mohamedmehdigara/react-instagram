@@ -12,6 +12,7 @@ import Feed from './components/Feed';
 import Signup from './components/Signup';
 import Login from './components/Login';
 import UserProfile from './components/UserProfile';
+import "./App.css";
 
 
 

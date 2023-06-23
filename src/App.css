@@ -1,93 +1,51 @@
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
 .header {
-  display: flex;
-  align-items: center;
-  padding: 10px;
-  background-color: #f0f0f0;
+  background-color: #fff;
+  padding: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .header__logo {
-  font-size: 30px;
-  margin-right: 10px;
+  font-family: 'Billabong', cursive;
+  font-size: 24px;
+  color: #405DE6;
+  text-decoration: none;
 }
 
-nav ul {
-  display: flex;
+.header__logo:hover {
+  color: #000;
+}
+
+.header nav ul {
   list-style: none;
-}
-
-nav ul li {
-  margin-right: 10px;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: #000;
-}
-
-
-.posts {
-  margin-top: 20px;
-}
-
-.post {
-  padding: 20px;
-  border: 1px solid #ccc;
-  margin-bottom: 20px;
-  text-decoration: none;
-  color: #000;
-}
-
-.post h2 {
-  margin: 0;
-}
-
-.post p {
-  margin-top: 10px;
-}
-
-.create-post {
-  margin-top: 20px;
-}
-
-.create-post form {
   display: flex;
-  flex-direction: column;
+  align-items: center;
 }
 
-.create-post .form-group {
-  margin-bottom: 20px;
+.header nav ul li {
+  margin-right: 16px;
 }
 
-.create-post label {
-  margin-bottom: 5px;
+.header nav ul li a {
+  color: #000;
+  text-decoration: none;
 }
 
-.create-post input,
-.create-post textarea {
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+.header nav ul li a:hover {
+  color: #405DE6;
 }
 
-.create-post button {
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 4px;
+.header nav ul li a.active {
+  font-weight: bold;
+}
+
+.header button {
   border: none;
-  background-color: #000;
-  color: #fff;
+  background-color: transparent;
+  color: #000;
+  font-weight: bold;
   cursor: pointer;
+}
+
+.header button:hover {
+  color: #405DE6;
 }
